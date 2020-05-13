@@ -1,10 +1,12 @@
 """
-Sprite move between different rooms.
-
-Artwork from http://kenney.nl
-
-If Python and Arcade are installed, this example can be run from the command line with:
-python -m arcade.examples.sprite_rooms
+Todo-list main code:
+ - Add another .append list for non-collision objects and implement it.
+ - Work out graphical elements in regards to textboxes from Jonas (tutorial)
+ - Transition to and from mini-games. Requires mini-game(s) to be completed.
+ - Achievements. Sprites or background? Updates how?
+ - Experiment with sprites downloads and / or backgrounds.
+ - Add animation to character. These sprites already exist.
+ - Add sound. Ambiance, footsteps, mumbling for tutorial, etc.
 """
 
 import arcade
