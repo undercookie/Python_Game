@@ -1,16 +1,33 @@
 """
-Todo-list main code:
- - Add another .append list for non-collision objects and implement it.
+What happend in this commit?
+
+I made the block in room 3 with no collision.
+Furthermore there is now a door in the top of room 3, leading to room 8. (I'll draw a map in hand tomorrow,
+so we have all the numbered rooms in the right place.
+I added some coins to room 8, still needs finetuning, so they don't appear in the walls.
+
+There is also a very early rendition of hangman. I wanted to test out some logic,
+and added very basic graphics to it. Logic is still not implemented. There is another todo-list,
+in that file, if you wish to try and improve it. Any help is more than welcome!
+
+Todo-list:
+ - Add collision for coins, and make them disappear when touched.
+ - Make a scoreboard.
  - Work out graphical elements in regards to textboxes from Jonas (tutorial)
  - Transition to and from mini-games. Requires mini-game(s) to be completed.
  - Achievements. Sprites or background? Updates how?
  - Experiment with sprites downloads and / or backgrounds.
  - Add animation to character. These sprites already exist.
  - Add sound. Ambiance, footsteps, mumbling for tutorial, etc.
+
+Done-list:
+ - Add another .append list for non-collision objects and implement it.
+        - We now have 3 sprite lists. Wall, noCol and coin.
 """
 
 import arcade
 import os
+import random
 
 
 import setup
@@ -84,6 +101,9 @@ class MyGame(arcade.Window):
         room = rooms.setup_room_7()
         self.rooms.append(room)
 
+        room = rooms.setup_room_8()
+        self.rooms.append(room)
+
         # Our starting room number
         self.current_room = 1
 
@@ -105,6 +125,8 @@ class MyGame(arcade.Window):
 
         # Draw all the walls in this room
         self.rooms[self.current_room].wall_list.draw()
+        self.rooms[self.current_room].noCol_list.draw()
+        self.rooms[self.current_room].coin_list.draw()
 
         # If you have coins or monsters, then copy and modify the line
         # above for each list.
@@ -146,11 +168,13 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
 
+
         elif self.player_sprite.center_x > setup.SCREEN_WIDTH and self.current_room == 1:
             self.current_room = 2
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
+
 
         elif self.player_sprite.center_x > setup.SCREEN_WIDTH and self.current_room == 2:
             self.current_room = 3
@@ -158,11 +182,19 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
 
+        elif self.player_sprite.center_y > setup.SCREEN_HEIGHT and self.current_room == 2:
+            self.current_room = 7
+            self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
+                                                             self.rooms[self.current_room].wall_list)
+            self.player_sprite.center_y = 0
+
+
         elif self.player_sprite.center_x > setup.SCREEN_WIDTH and self.current_room == 3:
             self.current_room = 4
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
+
 
         elif self.player_sprite.center_x > setup.SCREEN_WIDTH and self.current_room == 4:
             self.current_room = 5
@@ -170,11 +202,13 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
 
+
         elif self.player_sprite.center_x > setup.SCREEN_WIDTH and self.current_room == 5:
             self.current_room = 6
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
+
 
         elif self.player_sprite.center_x > setup.SCREEN_WIDTH and self.current_room == 6:
             self.current_room = 7
@@ -182,11 +216,14 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = 0
 
+
+
         elif self.player_sprite.center_x < 0 and self.current_room == 1:
             self.current_room = 0
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
+
 
         elif self.player_sprite.center_x < 0 and self.current_room == 2:
             self.current_room = 1
@@ -194,11 +231,13 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
 
+
         elif self.player_sprite.center_x < 0 and self.current_room == 3:
             self.current_room = 2
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
+
 
         elif self.player_sprite.center_x < 0 and self.current_room == 4:
             self.current_room = 3
@@ -206,11 +245,13 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
 
+
         elif self.player_sprite.center_x < 0 and self.current_room == 5:
             self.current_room = 4
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
+
 
         elif self.player_sprite.center_x < 0 and self.current_room == 6:
             self.current_room = 5
@@ -218,11 +259,19 @@ class MyGame(arcade.Window):
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
 
+
         elif self.player_sprite.center_x < 0 and self.current_room == 7:
             self.current_room = 6
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_x = setup.SCREEN_WIDTH
+
+
+        elif self.player_sprite.center_y < 0 and self.current_room == 7:
+            self.current_room = 2
+            self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
+                                                             self.rooms[self.current_room].wall_list)
+            self.player_sprite.center_y = setup.SCREEN_HEIGHT
 
 def main():
     """ Main method """
