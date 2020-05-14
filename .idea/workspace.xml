@@ -1,12 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9830e474-9c1d-45f9-bd24-b958c0f2c31f" name="Default Changelist" comment="" />
+    <list default="true" id="9830e474-9c1d-45f9-bd24-b958c0f2c31f" name="Default Changelist" comment="Added todo-list for the main code.">
+      <change afterPath="$PROJECT_DIR$/hangmantest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/rooms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test1.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+>>>>>>> c6f3828812dbfd4b61ba9706cd3f37ec98fa30d3
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -14,14 +48,60 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.hangmantest">
+    <configuration name="hangmantest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python_Game" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/hangmantest.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rooms" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python_Game" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/rooms.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python_Game" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -34,6 +114,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -45,7 +126,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.hangmantest" />
         <item itemvalue="Python.test1" />
+        <item itemvalue="Python.rooms" />
       </list>
     </recent_temporary>
   </component>
@@ -59,33 +142,96 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589361572776</updated>
+      <workItem from="1589389519658" duration="42000" />
+      <workItem from="1589389644311" duration="1901000" />
+      <workItem from="1589404282012" duration="26000" />
+      <workItem from="1589404338520" duration="4940000" />
+      <workItem from="1589409328741" duration="303000" />
     </task>
+    <task id="LOCAL-00001" summary="Added todo-list for the main code.">
+      <created>1589390570007</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589390570007</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added todo-list for the main code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added todo-list for the main code." />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="321" key="GridCell.Tab.0.bottom" timestamp="1589369315234">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state width="1340" height="258" key="GridCell.Tab.0.bottom" timestamp="1589409560687">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589409560687" />
     <state width="1899" height="321" key="GridCell.Tab.0.bottom/0.0.1920.1160@0.0.1920.1160" timestamp="1589369315234" />
-    <state width="1899" height="321" key="GridCell.Tab.0.center" timestamp="1589369315233">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state width="1340" height="258" key="GridCell.Tab.0.center" timestamp="1589409560687">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589409560687" />
     <state width="1899" height="321" key="GridCell.Tab.0.center/0.0.1920.1160@0.0.1920.1160" timestamp="1589369315233" />
-    <state width="1899" height="321" key="GridCell.Tab.0.left" timestamp="1589369315233">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state width="1340" height="258" key="GridCell.Tab.0.left" timestamp="1589409560687">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589409560687" />
     <state width="1899" height="321" key="GridCell.Tab.0.left/0.0.1920.1160@0.0.1920.1160" timestamp="1589369315233" />
-    <state width="1899" height="321" key="GridCell.Tab.0.right" timestamp="1589369315233">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state width="1340" height="258" key="GridCell.Tab.0.right" timestamp="1589409560687">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1340" height="258" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589409560687" />
     <state width="1899" height="321" key="GridCell.Tab.0.right/0.0.1920.1160@0.0.1920.1160" timestamp="1589369315233" />
-    <state x="461" y="223" key="SettingsEditor" timestamp="1589362437274">
-      <screen x="0" y="0" width="1920" height="1160" />
+    <state x="812" y="187" key="SettingsEditor" timestamp="1589389674201">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="812" y="187" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589389674201" />
     <state x="461" y="223" key="SettingsEditor/0.0.1920.1160@0.0.1920.1160" timestamp="1589362437274" />
+<<<<<<< HEAD
     <state x="656" y="405" key="com.intellij.ide.util.TipDialog" timestamp="1589375264366">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state x="656" y="405" key="com.intellij.ide.util.TipDialog/0.0.1920.1160@0.0.1920.1160" timestamp="1589375264366" />
+=======
+    <state x="493" y="254" key="Vcs.Push.Dialog.v2" timestamp="1589390607754">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="493" y="254" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589390607754" />
+    <state x="301" y="122" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589390374306">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="301" y="122" width="1200" height="800" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040/1920.0.1920.1080@0.0.1920.1040" timestamp="1589390374306" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Python_Game$rooms.coverage" NAME="rooms Coverage Results" MODIFIED="1589408177258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python_Game$hangmantest.coverage" NAME="hangmantest Coverage Results" MODIFIED="1589409560677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Python_Game$test1.coverage" NAME="test1 Coverage Results" MODIFIED="1589409469022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> c6f3828812dbfd4b61ba9706cd3f37ec98fa30d3
   </component>
 </project>
