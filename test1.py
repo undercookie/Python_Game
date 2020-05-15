@@ -41,6 +41,7 @@ rooms.setup_room_4()
 rooms.setup_room_5()
 rooms.setup_room_6()
 rooms.setup_room_7()
+rooms.setup_room_8()
 
 class MyGame(arcade.Window):
     """ Main application class. """

@@ -12,6 +12,7 @@ Todo:
 - Implementation into main code. Import or C+V
 """
 
+#import arcade.gui
 from arcade.gui import *
 import os
 import random
