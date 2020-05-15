@@ -23,6 +23,7 @@ Todo-list:
 Done-list:
  - Add another .append list for non-collision objects and implement it.
         - We now have 3 sprite lists. Wall, noCol and coin.
+- add a global variable so no objects like coins will be in the walls
 """
 
 import arcade
@@ -273,6 +274,21 @@ class MyGame(arcade.Window):
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
             self.player_sprite.center_y = setup.SCREEN_HEIGHT
+
+        # check for collision with player in room 8:
+        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite, rooms.setup_room_8().coin_list)
+
+        #Here we need to delete the coin from the physical game, but it doesn't work. The code finishes without entering the game.
+        #for coin in coin_hit_list:
+            #not sure if we need that:
+            #coin.center_x = random.randrange(setup.USABLE_ROOM, setup.SCREEN_WIDTH - (setup.USABLE_ROOM))
+            #coin.center_y = random.randrange(setup.USABLE_ROOM, setup.SCREEN_HEIGHT - (setup.USABLE_ROOM))
+
+            #one way that doesn't work:
+            #rooms.setup_room_8().room.coin_list.remove_sprite(coin)
+
+            #another way that's not right:
+            #self.rooms[self.current_room].coin_list.remove_sprite(coin)
 
 def main():
     """ Main method """

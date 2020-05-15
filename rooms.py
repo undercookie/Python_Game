@@ -341,8 +341,8 @@ def setup_room_8():
                              setup.SPRITE_SCALING_COIN)
 
         # Position the coin
-        coin.center_x = random.randrange(setup.SCREEN_WIDTH)
-        coin.center_y = random.randrange(setup.SCREEN_HEIGHT)
+        coin.center_x = random.randrange(setup.USABLE_ROOM, setup.SCREEN_WIDTH - (setup.USABLE_ROOM))
+        coin.center_y = random.randrange(setup.USABLE_ROOM, setup.SCREEN_HEIGHT - (setup.USABLE_ROOM))
 
         # Add the coin to the lists
         room.coin_list.append(coin)
