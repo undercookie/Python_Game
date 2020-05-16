@@ -1,0 +1,18 @@
+ROOM OVERVIEW
+
+Room 1 = Shrine / End Room
+Room 2 = Start Room / Tutorial Room
+Room 3 = Minigame 1
+Room 4 = Minigame 2
+Room 5 = Minigame 3
+Room 6 = Minigame 4
+Room 7 = Boss Fight
+
+Room 8 = Python Coin Collector
+Room 9 = Egg Game
+Room 10 = Against the Computer
+Room 11 = Hangman
+
+		8	    9	    10      11
+		-       -       -       -
+1   -	2	-   3   -	4   -	5   -	6   -	7
