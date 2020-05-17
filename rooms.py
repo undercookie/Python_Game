@@ -38,7 +38,7 @@ def setup_room_1():
     for y in (0, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE):
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite("images/jonas_character.PNG", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
@@ -49,14 +49,14 @@ def setup_room_1():
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             # Skip making a block 4 and 5 blocks up on the right side
             if y != setup.SPRITE_SIZE * 5 or x == 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite("images/jonas_character.PNG", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
 
 
     # Load the background image for this level.
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/jonas_1.webp")
 
     return room
 
@@ -79,7 +79,7 @@ def setup_room_2():
     for y in (0, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE):
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
@@ -90,7 +90,7 @@ def setup_room_2():
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             # Skip making a block 4 and 5 blocks up
             if y != setup.SPRITE_SIZE * 5:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -100,7 +100,7 @@ def setup_room_2():
     wall.left = 8 * setup.SPRITE_SIZE
     wall.bottom = 8 * setup.SPRITE_SIZE
     room.noCol_list.append(wall)
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_2.jpg")
+    room.background = arcade.load_texture("images/bg1.png")
 
     return room
 
@@ -124,7 +124,7 @@ def setup_room_3():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10 or y == 0):
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -135,7 +135,7 @@ def setup_room_3():
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             # Skip making a block 4 and 5 blocks up
             if y != setup.SPRITE_SIZE * 5 or x != 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -144,7 +144,7 @@ def setup_room_3():
     wall.left = 8 * setup.SPRITE_SIZE
     wall.bottom = 8 * setup.SPRITE_SIZE
     room.noCol_list.append(wall)
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/bg2.png")
 
     return room
 
@@ -167,7 +167,7 @@ def setup_room_4():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10 or y == 0):
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -178,7 +178,7 @@ def setup_room_4():
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             # Skip making a block 4 and 5 blocks up
             if y != setup.SPRITE_SIZE * 5 or x != 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -187,7 +187,7 @@ def setup_room_4():
     wall.left = 8 * setup.SPRITE_SIZE
     wall.bottom = 8 * setup.SPRITE_SIZE
     room.noCol_list.append(wall)
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_2.jpg")
+    room.background = arcade.load_texture("images/bg3.png")
 
     return room
 
@@ -211,7 +211,7 @@ def setup_room_5():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10 or y == 0):
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -220,14 +220,17 @@ def setup_room_5():
     for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
         # Loop for each box going across
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
-            # Skip making a block 4 and 5 blocks up
-            if y != setup.SPRITE_SIZE * 5:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            if y != setup.SPRITE_SIZE * 5 or x != 0:
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    wall = arcade.Sprite(":resources:images/animated_characters/male_adventurer/maleAdventurer_idle.png", setup.SPRITE_SCALING)
+    wall.left = 8 * setup.SPRITE_SIZE
+    wall.bottom = 8 * setup.SPRITE_SIZE
+    room.noCol_list.append(wall)
+    room.background = arcade.load_texture("images/bg4.png")
 
     return room
 
@@ -251,7 +254,7 @@ def setup_room_6():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10 or y == 0):
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -262,12 +265,12 @@ def setup_room_6():
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             # Skip making a block 4 and 5 blocks up
             if y != setup.SPRITE_SIZE * 5:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_2.jpg")
+    room.background = arcade.load_texture("images/bg5.png")
 
     return room
 
@@ -289,7 +292,7 @@ def setup_room_7():
     for y in (0, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE):
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
@@ -300,12 +303,12 @@ def setup_room_7():
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             # Skip making a block 4 and 5 blocks up
             if y != setup.SPRITE_SIZE * 5 or x != 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/bg6.png")
 
     return room
 
@@ -329,7 +332,7 @@ def setup_room_8():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10) or y != 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -338,7 +341,7 @@ def setup_room_8():
     for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
         # Loop for each box going across
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
@@ -356,7 +359,7 @@ def setup_room_8():
         # Add the coin to the lists
         room.coin_list.append(coin)
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/bg2.png")
 
     return room
 
@@ -379,7 +382,7 @@ def setup_room_9():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10):
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -388,7 +391,7 @@ def setup_room_9():
     for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
         # Loop for each box going across
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
@@ -411,13 +414,13 @@ def setup_room_9():
     status = 1
     for i in range(0, 13, 1):
         for x in y[i]:
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
             wall.left = x * setup.SPRITE_SIZE
             wall.bottom = status * setup.SPRITE_SIZE
             room.wall_list.append(wall)
         status += 1
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/bg3.png")
     return room
 
 
@@ -440,7 +443,7 @@ def setup_room_10():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10) or y != 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -449,12 +452,12 @@ def setup_room_10():
     for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
         # Loop for each box going across
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/bg4.png")
 
     return room
 
@@ -478,7 +481,7 @@ def setup_room_11():
         # Loop for each box going across
         for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
             if (x != setup.SPRITE_SIZE * 9 and x != setup.SPRITE_SIZE * 10) or y != 0:
-                wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+                wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big2.png", setup.SPRITE_SCALING)
                 wall.left = x
                 wall.bottom = y
                 room.wall_list.append(wall)
@@ -487,13 +490,11 @@ def setup_room_11():
     for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
         # Loop for each box going across
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
-            wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", setup.SPRITE_SCALING)
+            wall = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
             wall.left = x
             wall.bottom = y
             room.wall_list.append(wall)
 
-    room.background = arcade.load_texture(":resources:images/backgrounds/abstract_1.jpg")
+    room.background = arcade.load_texture("images/bg5.png")
 
     return room
-
-
