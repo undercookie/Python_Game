@@ -414,7 +414,7 @@ class MyGame(arcade.Window):
             self.total_time = 0
             self.score = 0
 
-        elif self.total2 >= 1 and self.score == 1:
+        elif self.total2 >= 1 and self.score == 40:
             self.current_room = 2
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
