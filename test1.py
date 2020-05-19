@@ -1,6 +1,14 @@
 """
 What happend in this commit?
 
+TUESDAY - JAMIE
+
+I didn't manage to do much, I tried to shorten the code in a lot of different ways and well, I found many that
+don't work. But I added several functions to create different kinds of walls, which shortens the rooms.py file
+for about the half of it. I tried to shorten the def on_update() too, but it turned out a lot harder than I thought.
+I'll keep looking into it. I take a break now and will commit beforehand so you have all the code, but I will work on
+it again a bit later today. Let's hope the next round turns out fruitfull...
+
 SATURDAY
 
 I changed the name of your brilliant function to "door_mechanism_close", and did my best copy+paste
@@ -55,16 +63,6 @@ import os
 import random
 import setup
 import rooms
-
-
-rooms.setup_room_1()
-rooms.setup_room_2()
-rooms.setup_room_3()
-rooms.setup_room_4()
-rooms.setup_room_5()
-rooms.setup_room_6()
-rooms.setup_room_7()
-rooms.setup_room_8()
 
 
 class FlyingSprite(arcade.Sprite):
@@ -470,7 +468,7 @@ class MyGame(arcade.Window):
             self.total_time = 0
             self.score = 0
 
-        elif self.current_room == 7 and self.score == 40:
+        elif self.current_room == 7 and self.score == 10:
             self.current_room = 2
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
