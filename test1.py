@@ -1,46 +1,20 @@
 """
 What happend in this commit?
 
-TUESDAY - JAMIE
+SATURDAY:
 
-I didn't manage to do much, I tried to shorten the code in a lot of different ways and well, I found many that
-don't work. But I added several functions to create different kinds of walls, which shortens the rooms.py file
-for about the half of it. I tried to shorten the def on_update() too, but it turned out a lot harder than I thought.
-I'll keep looking into it. I take a break now and will commit beforehand so you have all the code, but I will work on
-it again a bit later today. Let's hope the next round turns out fruitfull...
-
-SATURDAY
-
-I changed the name of your brilliant function to "door_mechanism_close", and did my best copy+paste
-to make a "door_mechanism_open" as well.
-I used this function to make it so that you can proceed to the next room, before you complete the minigame.
-I added text-boxes for 3 rooms. They appear when you bump into the character, and update
-when you complete a minigame! Text can be updated, further down the line.
-I also made a maze as the minigame after the coin thingy. I quite literally plotted a maze in
-a table in Google Docs, so it might need to get more difficult, feel free to update it.
-It took quite a bit of time, to figure out how to .draw the walls of the maze most effeciently,
-and I'm quite content with my outcome. Can be seen in the rooms.py file under room 9.
-There is now a images folder in our Python_Game project. All custom sprites / backgrounds should go there.
+I made the final boss room, still needs tweaking, kinda iffy, but working.
+SANOJ will spawn after 15 seconds. If you hit the moving walls you respawn and will have to enter again.
+Hit SANOJ after he spawned, to get teleported to room 1, with a new dialouge message and the trophy room opening up.
+Still needs bug-fixing and transistion, when we implement hangman. Right now you can just walk through room 6.
+I also added new background and "music" for the boss room. This NEEDS to be changed. It's scaring me shitless.
+Also added epic music upon victory. This I like.
 Now I sleep.
 
-SUNDAY
-
-I started working on the next minigame. Something similar to the egg drop from pygame.
-I decided to go with coins again, as we already had the collision worked out for those,
-we can change it later if you want something else.
-I re-added the "FlyingSprites" class to make sprites move.
-It's easier that you play it yourself, so you can figure out how it works, than me trying to explain
-it in plain text.
-I also gave the walls and background new textures. Can also be changed, and are by no means final,
-was just getting tired of the yellow and blue one after having played this game more than 100 times by now.
-Background music was also added! - For ambiance!
-Try and give it a play! Also, when you are done, look at the shrine room. Not done yet, but still :)
-Now I sleep.
 
 Todo-list:
  - Shorten the on_update definition. I'm getting lost among all the elif statements. Anything we can do?
  - Make the hangman game.
- - Make the final boss room!!!
  - Achievements. Sprites or background? Updates how?
  - Add animation to character. These sprites already exist. How?
  - Add more sound. Footsteps, mumbling for tutorial, etc.
@@ -56,6 +30,8 @@ Done-list:
  - Work out graphical elements in regards to textboxes from Jonas (tutorial)
  - Make a maze minigame
  - Experiment with sprites downloads and / or backgrounds.
+ - Make the final boss room!!!
+ - Added more sound.
 """
 
 import arcade
@@ -109,6 +85,9 @@ class MyGame(arcade.Window):
         self.music_list = []
         self.current_song = 0
         self.music = None
+        self.collided = False
+        self.second_updater = 0
+        self.new_time_variable = 0
 
     def setup(self):
         """ Set up the game and initialize the variables. """
@@ -123,9 +102,11 @@ class MyGame(arcade.Window):
         self.total = 0
         self.total2 = 0
         self.status_var = 0
-        self.music_list = ["sounds/music_background.mp3"]
+        self.music_list = ["sounds/music_background.mp3", "sounds/music_evil.mp3", "sounds/music_win.mp3"]
         self.current_song = 0
         self.play_song()
+        self.second_updater = 0
+        self.new_time_variable = 0
 
         # Our list of rooms
         self.rooms = []
@@ -165,17 +146,23 @@ class MyGame(arcade.Window):
         self.rooms.append(room)
 
         # Our starting room number
-        self.current_room = 1
+        self.current_room = 5
 
         self.total_time = 0.0
 
         # Create a physics engine for this room
         self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.rooms[self.current_room].wall_list)
 
+
+
     def advance_song(self):
         self.current_song += 1
         if self.current_song >= len(self.music_list):
             self.current_song = 0
+
+    def update_second(self):
+        if self.current_room == 6:
+            self.second_updater += 1
 
     def play_song(self):
         """ Play the song. """
@@ -222,6 +209,9 @@ class MyGame(arcade.Window):
         seconds = int(self.total_time) % 60
         output_time = f"Time: {minutes:02d}:{seconds:02d}"
         arcade.draw_text(output_time, 1150, 20, arcade.color.WHITE, 14)
+        if self.new_time_variable == seconds:
+            self.update_second()
+            self.new_time_variable += 2
 
     def add_coin(self, delta_time: float):
         """Adds a new coin to the screen
@@ -241,6 +231,26 @@ class MyGame(arcade.Window):
 
         # Add it to the enemies list
         self.rooms[self.current_room].coin_list.append(coin)
+
+
+    def add_wall_row(self, delta_time: float):
+        """Adds a new enemy to the screen
+        Arguments:
+            delta_time {float} -- How much time has passed since the last call
+        """
+
+
+        local_random = random.randint(2, 14)
+
+        for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
+            # Skip making a block 5:
+            if y != setup.SPRITE_SIZE * local_random:
+                wall_row = arcade.Sprite(":resources:images/space_shooter/meteorGrey_big1.png", setup.SPRITE_SCALING)
+                wall_row.left = setup.SCREEN_WIDTH - setup.SPRITE_SIZE
+                wall_row.bottom = y
+                wall_row.velocity = (-2, 0)
+                self.rooms[self.current_room].coin_list.append(wall_row)
+
 
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """
@@ -468,7 +478,7 @@ class MyGame(arcade.Window):
             self.total_time = 0
             self.score = 0
 
-        elif self.current_room == 7 and self.score == 10:
+        elif self.current_room == 7 and self.score == 4:
             self.current_room = 2
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
@@ -489,7 +499,7 @@ class MyGame(arcade.Window):
             self.rooms[self.current_room].wall_list.append(dialogue_1)
             self.rooms[self.current_room].wall_list.append(dialogue_2)
 
-        elif self.current_room == 9 and self.score == 20:
+        elif self.current_room == 9 and self.score == 2:
             self.current_room = 4
             self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite,
                                                              self.rooms[self.current_room].wall_list)
@@ -507,10 +517,13 @@ class MyGame(arcade.Window):
             dialogue_1.center_y = 740
             dialogue_2.center_x = 692
             dialogue_2.center_y = 625
+            self.status_var = 0
 
             # Add it to the enemies list
             self.rooms[self.current_room].wall_list.append(dialogue_1)
             self.rooms[self.current_room].wall_list.append(dialogue_2)
+
+
 
         # Collision with coin - removing them and creating them again.
         if self.current_room == 7:
@@ -551,6 +564,29 @@ class MyGame(arcade.Window):
                 self.add_coin(delta_time)
                 self.score += 1
 
+        if self.current_room == 6:
+            wall_row_list = self.rooms[self.current_room].coin_list
+            wall_row_hit_list = arcade.check_for_collision_with_list(self.player_sprite, wall_row_list)
+            self.rooms[self.current_room].coin_list.update()
+            if self.second_updater != self.new_time_variable and self.second_updater % 3 == 0:
+                self.add_wall_row(delta_time)
+                self.new_time_variable = self.second_updater
+            if self.second_updater != self.new_time_variable and self.second_updater % 3 != 0:
+                self.new_time_variable = self.second_updater
+            for wall_row in wall_row_hit_list:
+                wall_row.remove_from_sprite_lists()
+                self.current_room = 5
+                self.player_sprite.center_y = setup.SCREEN_HEIGHT // 2 - 100
+                self.player_sprite.center_x = setup.SCREEN_WIDTH - 150
+        if self.current_room == 6 and self.new_time_variable == 15:
+            wall = arcade.Sprite("images/jonas_character.PNG",
+                                 setup.SPRITE_SCALING)
+            wall.left = 18 * setup.SPRITE_SIZE
+            wall.bottom = 2 * setup.SPRITE_SIZE
+            self.rooms[self.current_room].noCol_list.append(wall)
+
+
+
         # Collision with player - displaying text.
         player_list = self.rooms[self.current_room].noCol_list
         player_hit_list = arcade.check_for_collision_with_list(self.player_sprite, player_list)
@@ -559,28 +595,66 @@ class MyGame(arcade.Window):
 
         for player in player_hit_list:
 
-            if self.current_room == 1:
+            if self.current_room == 1 and self.total_time == 0:
                 dialogue_1 = arcade.Sprite("images/room_2_dia_1.png", setup.SPRITE_SCALING_TEXT)
                 dialogue_2 = arcade.Sprite("images/room_2_dia_2.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_1.center_x = 650
+                dialogue_1.center_y = 740
+                dialogue_2.center_x = 650
+                dialogue_2.center_y = 625
+                self.rooms[self.current_room].wall_list.append(dialogue_1)
+                self.rooms[self.current_room].wall_list.append(dialogue_2)
             if self.current_room == 2 and self.score != 40:
                 dialogue_1 = arcade.Sprite("images/room_3_dia_1.png", setup.SPRITE_SCALING_TEXT)
                 dialogue_2 = arcade.Sprite("images/room_3_dia_2.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_1.center_x = 650
+                dialogue_1.center_y = 740
+                dialogue_2.center_x = 650
+                dialogue_2.center_y = 625
+                self.rooms[self.current_room].wall_list.append(dialogue_1)
+                self.rooms[self.current_room].wall_list.append(dialogue_2)
             if self.current_room == 3:
                 dialogue_1 = arcade.Sprite("images/room_4_dia_1.png", setup.SPRITE_SCALING_TEXT)
                 dialogue_2 = arcade.Sprite("images/room_4_dia_2.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_1.center_x = 650
+                dialogue_1.center_y = 740
+                dialogue_2.center_x = 650
+                dialogue_2.center_y = 625
+                self.rooms[self.current_room].wall_list.append(dialogue_1)
+                self.rooms[self.current_room].wall_list.append(dialogue_2)
             if self.current_room == 4 and self.score != 20:
                 dialogue_1 = arcade.Sprite("images/room_5_dia_1.png", setup.SPRITE_SCALING_TEXT)
                 dialogue_2 = arcade.Sprite("images/room_5_dia_2.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_1.center_x = 650
+                dialogue_1.center_y = 740
+                dialogue_2.center_x = 650
+                dialogue_2.center_y = 625
+                self.rooms[self.current_room].wall_list.append(dialogue_1)
+                self.rooms[self.current_room].wall_list.append(dialogue_2)
+            if self.current_room == 6:
+                self.current_room = 1
+                self.door_mechanism_open()
+                dialogue_1 = arcade.Sprite("images/room_2_dia_3.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_2 = arcade.Sprite("images/room_2_dia_4.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_1.center_x = 670
+                dialogue_1.center_y = 740
+                dialogue_2.center_x = 670
+                dialogue_2.center_y = 625
+                self.rooms[self.current_room].wall_list.append(dialogue_1)
+                self.rooms[self.current_room].wall_list.append(dialogue_2)
+                self.current_song = 2
+                self.play_song()
+
 
             # Set its position to a random height and off screen right
-            dialogue_1.center_x = 650
-            dialogue_1.center_y = 740
-            dialogue_2.center_x = 650
-            dialogue_2.center_y = 625
+       #     dialogue_1.center_x = 650
+       #     dialogue_1.center_y = 740
+       #     dialogue_2.center_x = 650
+       #     dialogue_2.center_y = 625
 
             # Add it to the enemies list
-            self.rooms[self.current_room].wall_list.append(dialogue_1)
-            self.rooms[self.current_room].wall_list.append(dialogue_2)
+           # self.rooms[self.current_room].wall_list.append(dialogue_1)
+           # self.rooms[self.current_room].wall_list.append(dialogue_2)
 
         if self.current_room == 7 and self.total >= 1:
             self.total_time += delta_time
@@ -588,12 +662,17 @@ class MyGame(arcade.Window):
         if self.current_room == 8:
             self.total_time += delta_time
 
+        if self.current_room == 6:
+            if self.total_time == 0:
+                self.current_song = 1
+                self.play_song()
+            self.total_time += delta_time
+
         if self.current_room == 4:
             self.status_var = 0
 
         position = self.music.get_stream_position()
         if position == 0.0:
-            self.advance_song()
             self.play_song()
 
 def main():

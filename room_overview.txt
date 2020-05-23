@@ -9,8 +9,8 @@ Room 6 = Minigame 4
 Room 7 = Boss Fight
 
 Room 8 = Python Coin Collector
-Room 9 = Egg Game
-Room 10 = Against the Computer
+Room 9 = Maze
+Room 10 = Egg game
 Room 11 = Hangman
 
 		        8	    9	    10      11
