@@ -574,8 +574,10 @@ class MyGame(arcade.Window):
             if self.second_updater != self.new_time_variable and self.second_updater % 3 != 0:
                 self.new_time_variable = self.second_updater
             for wall_row in wall_row_hit_list:
-                wall_row.remove_from_sprite_lists()
+                for wall_row in wall_row_list:
+                    wall_row.remove_from_sprite_lists()
                 self.current_room = 5
+                self.new_time_variable = 0
                 self.player_sprite.center_y = setup.SCREEN_HEIGHT // 2 - 100
                 self.player_sprite.center_x = setup.SCREEN_WIDTH - 150
         if self.current_room == 6 and self.new_time_variable == 15:
@@ -644,17 +646,6 @@ class MyGame(arcade.Window):
                 self.rooms[self.current_room].wall_list.append(dialogue_2)
                 self.current_song = 2
                 self.play_song()
-
-
-            # Set its position to a random height and off screen right
-       #     dialogue_1.center_x = 650
-       #     dialogue_1.center_y = 740
-       #     dialogue_2.center_x = 650
-       #     dialogue_2.center_y = 625
-
-            # Add it to the enemies list
-           # self.rooms[self.current_room].wall_list.append(dialogue_1)
-           # self.rooms[self.current_room].wall_list.append(dialogue_2)
 
         if self.current_room == 7 and self.total >= 1:
             self.total_time += delta_time
