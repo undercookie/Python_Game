@@ -291,4 +291,68 @@ def setup_room_11():
     room.create_wall_bottom_inside(":resources:images/space_shooter/meteorGrey_big1.png")
     room.create_wall_sides_inside(":resources:images/space_shooter/meteorGrey_big1.png")
 
+    # the hanging man:
+    wall = arcade.Sprite(":resources:images/animated_characters/male_person/malePerson_idle.png", setup.SPRITE_SCALING)
+    wall.left = (13 * setup.SPRITE_SIZE) + 35
+    wall.bottom = (3 * setup.SPRITE_SIZE) + 3
+    room.wall_list.append(wall)
+
+    # create the Gallows:
+    gallows_1 = arcade.Sprite("images/Gallows_1.png", setup.SPRITE_SCALING)
+    gallows_2 = arcade.Sprite("images/Gallows_2.png", setup.SPRITE_SCALING)
+    gallows_3 = arcade.Sprite("images/Gallows_3.png", setup.SPRITE_SCALING)
+    gallows_4 = arcade.Sprite("images/Gallows_4.png", setup.SPRITE_SCALING)
+    gallows_5 = arcade.Sprite("images/Gallows_5.png", setup.SPRITE_SCALING)
+    gallows_6 = arcade.Sprite("images/Gallows_5.png", setup.SPRITE_SCALING)
+
+    room.gallows_list = [gallows_1, gallows_2, gallows_3, gallows_4, gallows_5, gallows_6]
+
+    room.gallows_list[0].left = 13 * setup.SPRITE_SIZE
+    room.gallows_list[0].bottom = 2 * setup.SPRITE_SIZE
+    room.wall_list.append(room.gallows_list[0])
+
+    # enemy robot that the player has to "fight" in hangman. Without the scaling, so the robot seems more threatening:
+    enemy_robot = arcade.Sprite(":resources:images/animated_characters/robot/robot_idle.png")
+    enemy_robot.left = 7 * setup.SPRITE_SIZE
+    enemy_robot.bottom = 8 * setup.SPRITE_SIZE
+    room.noCol_list.append(enemy_robot)
+
+    # locked boxes, one for each letter in the keyword:
+
+    for x in range(12 * setup.SPRITE_SIZE, 18 * setup.SPRITE_SIZE, setup.SPRITE_SIZE):
+        lock = arcade.Sprite(":resources:images/tiles/lockYellow.png", setup.SPRITE_SCALING)
+        lock.left = x
+        lock.bottom = 6 * setup.SPRITE_SIZE
+        room.wall_list.append(lock)
+
+    # dictionary with all the letters of the alphabet in Sprites, so the user can choose for the hangman:
+    room.letters = dict()
+
+    room.letters['a'] = arcade.Sprite("images/pixel-speech-bubble_A.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['b'] = arcade.Sprite("images/pixel-speech-bubble_B.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['c'] = arcade.Sprite("images/pixel-speech-bubble_C.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['d'] = arcade.Sprite("images/pixel-speech-bubble_D.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['e'] = arcade.Sprite("images/pixel-speech-bubble_E.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['f'] = arcade.Sprite("images/pixel-speech-bubble_F.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['g'] = arcade.Sprite("images/pixel-speech-bubble_G.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['h'] = arcade.Sprite("images/pixel-speech-bubble_H.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['i'] = arcade.Sprite("images/pixel-speech-bubble_I.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['j'] = arcade.Sprite("images/pixel-speech-bubble_J.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['k'] = arcade.Sprite("images/pixel-speech-bubble_K.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['l'] = arcade.Sprite("images/pixel-speech-bubble_L.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['m'] = arcade.Sprite("images/pixel-speech-bubble_M.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['n'] = arcade.Sprite("images/pixel-speech-bubble_N.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['o'] = arcade.Sprite("images/pixel-speech-bubble_O.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['p'] = arcade.Sprite("images/pixel-speech-bubble_P.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['q'] = arcade.Sprite("images/pixel-speech-bubble_Q.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['r'] = arcade.Sprite("images/pixel-speech-bubble_R.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['s'] = arcade.Sprite("images/pixel-speech-bubble_S.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['t'] = arcade.Sprite("images/pixel-speech-bubble_T.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['u'] = arcade.Sprite("images/pixel-speech-bubble_U.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['v'] = arcade.Sprite("images/pixel-speech-bubble_V.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['w'] = arcade.Sprite("images/pixel-speech-bubble_W.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['x'] = arcade.Sprite("images/pixel-speech-bubble_X.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['y'] = arcade.Sprite("images/pixel-speech-bubble_Y.png", setup.SPRITE_SCALING_TEXT2)
+    room.letters['z'] = arcade.Sprite("images/pixel-speech-bubble_Z.png", setup.SPRITE_SCALING_TEXT2)
+
     return room

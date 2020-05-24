@@ -193,6 +193,7 @@ class MyGame(arcade.Window):
         self.play_song()
         self.second_updater = 0
         self.new_time_variable = 0
+        self.choice_hangman = None
 
         # Our list of rooms
         self.rooms = []
@@ -351,6 +352,20 @@ class MyGame(arcade.Window):
         elif key == arcade.key.RIGHT:
             self.player.change_x = setup.MOVEMENT_SPEED
 
+        if self.current_room == 10:
+            self.choice_hangman = None
+            try:
+                choice_hangman = chr(key)
+                self.choice_hangman = choice_hangman
+                current_room = self.rooms[self.current_room]
+                self.letter_sprite = current_room.letters[self.choice_hangman]
+                self.letter_sprite.center_x = self.player.center_x + 30
+                self.letter_sprite.center_y = self.player.center_y + 30
+                self.rooms[self.current_room].wall_list.append(self.letter_sprite)
+
+            except:
+                pass
+
     def on_key_release(self, key, modifiers):
         """Called when the user releases a key. """
 
@@ -460,6 +475,9 @@ class MyGame(arcade.Window):
             self.physics_engine = arcade.PhysicsEngineSimple(self.player,
                                                              self.rooms[self.current_room].wall_list)
             self.player.center_y = 0
+            self.tries = 0
+            self.correct_letters = 0
+            self.gallows_remove_list = []
 
         elif self.player.center_x > setup.SCREEN_WIDTH and self.current_room == 6:
             self.current_room = 7
@@ -613,7 +631,90 @@ class MyGame(arcade.Window):
             self.rooms[self.current_room].wall_list.append(dialogue_1)
             self.rooms[self.current_room].wall_list.append(dialogue_2)
 
+        if self.current_room == 10:
+            word_hangman = "binary"
+            if self.choice_hangman != None:
+                if self.choice_hangman in self.rooms[self.current_room].letters.keys():
+                    if self.choice_hangman in word_hangman:
+                        #cover boxes with the right letter when guessed:
+                        if self.choice_hangman == "b":
+                            letter_B = arcade.Sprite("images/lock_B.png", setup.SPRITE_SCALING)
+                            letter_B.left = 12 * setup.SPRITE_SIZE
+                            letter_B.bottom = 6 * setup.SPRITE_SIZE
+                            self.rooms[self.current_room].wall_list.append(letter_B)
+                            self.correct_letters += 1
+                            self.choice_hangman = None
+                        if self.choice_hangman == "i":
+                            letter_I = arcade.Sprite("images/lock_I.png", setup.SPRITE_SCALING)
+                            letter_I.left = 13 * setup.SPRITE_SIZE
+                            letter_I.bottom = 6 * setup.SPRITE_SIZE
+                            self.rooms[self.current_room].wall_list.append(letter_I)
+                            self.correct_letters += 1
+                            self.choice_hangman = None
+                        if self.choice_hangman == "n":
+                            letter_N = arcade.Sprite("images/lock_N.png", setup.SPRITE_SCALING)
+                            letter_N.left = 14 * setup.SPRITE_SIZE
+                            letter_N.bottom = 6 * setup.SPRITE_SIZE
+                            self.rooms[self.current_room].wall_list.append(letter_N)
+                            self.correct_letters += 1
+                            self.choice_hangman = None
+                        if self.choice_hangman == "a":
+                            letter_A = arcade.Sprite("images/lock_A.png", setup.SPRITE_SCALING)
+                            letter_A.left = 15 * setup.SPRITE_SIZE
+                            letter_A.bottom = 6 * setup.SPRITE_SIZE
+                            self.rooms[self.current_room].wall_list.append(letter_A)
+                            self.correct_letters += 1
+                            self.choice_hangman = None
+                        if self.choice_hangman == "r":
+                            letter_R = arcade.Sprite("images/lock_R.png", setup.SPRITE_SCALING)
+                            letter_R.left = 16 * setup.SPRITE_SIZE
+                            letter_R.bottom = 6 * setup.SPRITE_SIZE
+                            self.rooms[self.current_room].wall_list.append(letter_R)
+                            self.correct_letters += 1
+                            self.choice_hangman = None
+                        if self.choice_hangman == "y":
+                            letter_Y = arcade.Sprite("images/lock_Y.png", setup.SPRITE_SCALING)
+                            letter_Y.left = 17 * setup.SPRITE_SIZE
+                            letter_Y.bottom = 6 * setup.SPRITE_SIZE
+                            self.rooms[self.current_room].wall_list.append(letter_Y)
+                            self.correct_letters += 1
+                            self.choice_hangman = None
+                    else:
+                        self.tries += 1
+                        self.rooms[self.current_room].gallows_list[self.tries].left = 13 * setup.SPRITE_SIZE
+                        self.rooms[self.current_room].gallows_list[self.tries].bottom = 2 * setup.SPRITE_SIZE
+                        self.rooms[self.current_room].wall_list.append(self.rooms[self.current_room].gallows_list[self.tries])
+                        self.choice_hangman = None
+                        if self.tries != 0:
+                            self.gallows_remove_list.append(self.rooms[self.current_room].gallows_list[self.tries -1])
+                            for gallow in self.gallows_remove_list:
+                                gallow.remove_from_sprite_lists()
 
+                                new_gallow =  self.rooms[self.current_room].gallows_list[self.tries]
+
+                                self.rooms[self.current_room].gallows_list[self.tries].left = 13 * setup.SPRITE_SIZE
+                                self.rooms[self.current_room].gallows_list[self.tries].bottom = 2 * setup.SPRITE_SIZE
+                                self.rooms[self.current_room].wall_list.append(new_gallow)
+
+        if self.current_room == 10 and self.tries == 5:
+            self.current_room = 5
+            self.physics_engine = arcade.PhysicsEngineSimple(self.player,
+                                                             self.rooms[self.current_room].wall_list)
+            self.player.center_y = setup.SCREEN_HEIGHT - 50
+            self.player.center_x = setup.SCREEN_WIDTH // 2
+            self.tries == 0
+            self.correct_letters = 0
+            self.rooms[10] = rooms.setup_room_11()
+
+        if self.current_room == 10 and self.correct_letters == 6:
+            self.current_room = 5
+            self.physics_engine = arcade.PhysicsEngineSimple(self.player,
+                                                             self.rooms[self.current_room].wall_list)
+            self.player.center_y = setup.SCREEN_HEIGHT - 50
+            self.player.center_x = setup.SCREEN_WIDTH // 2
+
+            MyGame.door_mechanism_close(self)
+            MyGame.door_mechanism_open(self)
 
         # Collision with coin - removing them and creating them again.
         if self.current_room == 7:
@@ -736,6 +837,15 @@ class MyGame(arcade.Window):
                 self.rooms[self.current_room].wall_list.append(dialogue_2)
                 self.current_song = 2
                 self.play_song()
+            if self.current_room == 10:
+                dialogue_1 = arcade.Sprite("images/room_10_dia_1.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_2 = arcade.Sprite("images/room_10_dia_2.png", setup.SPRITE_SCALING_TEXT)
+                dialogue_1.center_x = 650
+                dialogue_1.center_y = 740
+                dialogue_2.center_x = 650
+                dialogue_2.center_y = 650
+                self.rooms[self.current_room].wall_list.append(dialogue_1)
+                self.rooms[self.current_room].wall_list.append(dialogue_2)
 
         if self.current_room == 7 and self.total >= 1:
             self.total_time += delta_time
