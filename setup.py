@@ -1,3 +1,5 @@
+# Global variables needed for screen setup and sprite setup.
+# They are pretty self explanatory.
 
 RIGHT_FACING = 0
 LEFT_FACING = 0
