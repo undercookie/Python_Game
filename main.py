@@ -136,7 +136,7 @@ class MyGame(arcade.Window):
         self.rooms.append(room)
 
         # Our starting room number and enables physics engine
-        self.current_room = 5
+        self.current_room = 1
         self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.rooms[self.current_room].wall_list)
 
     # We use this to change between background music
