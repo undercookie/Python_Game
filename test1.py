@@ -5,7 +5,7 @@ import setup
 import rooms
 
 
-# Necesarry function for animation of player model.
+# Necessary function for animation of player model.
 def load_texture_pair(filename):
     return [
         arcade.load_texture(filename)
@@ -88,6 +88,7 @@ class MyGame(arcade.Window):
         self.collided = False  # If true, we have collided with another sprite list.
         self.second_updater = 0  # Another time variable, used for creating wall_rows in the boss room.
         self.new_time_variable = 0  # WHAT?? ANOTHER TIME VARIABLE? Time is hard...
+        self.choice_hangman = None  # Used for keystrokes in hangman room.
 
     def setup(self):
         """ Set up the game and initialize the variables. """
@@ -106,7 +107,6 @@ class MyGame(arcade.Window):
         self.play_song()
         self.second_updater = 0
         self.new_time_variable = 0
-        self.choice_hangman = None  # Used for keystrokes in hangman room.
         self.rooms = []
         self.player_list.append(self.player)
         self.total_time = 0.0
@@ -136,7 +136,7 @@ class MyGame(arcade.Window):
         self.rooms.append(room)
 
         # Our starting room number and enables physics engine
-        self.current_room = 1
+        self.current_room = 5
         self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.rooms[self.current_room].wall_list)
 
     # We use this to change between background music
@@ -187,12 +187,12 @@ class MyGame(arcade.Window):
         coin = FlyingSprite("images/python-icon-2.png", setup.SPRITE_SCALING_COIN)  # Calls FlyingSprite with sprite.
         coin.center_x = random.randrange(setup.USABLE_ROOM, setup.SCREEN_WIDTH - setup.USABLE_ROOM)  # Location of coin.
         coin.center_y = setup.SCREEN_HEIGHT
-        coin.change_y = random.randint(-5, -1)  # Alters the y of the coin.
+        coin.change_y = random.randint(-5, -1)  # Alters the y coordinate of the coin.
         self.rooms[self.current_room].coin_list.append(coin)  # Appends the coin to the coin_list and therefore appears.
 
     # Adds a new wall row to the screen
     def add_wall_row(self, delta_time: float):
-        local_random = random.randint(2, 14)  # This local variable is used to make a hole in the wall_row.
+        local_random = random.randint(2, 13)  # This local variable is used to make a hole in the wall_row.
         # This code is explained in rooms.py
         for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
             if y != setup.SPRITE_SIZE * local_random:
@@ -215,15 +215,15 @@ class MyGame(arcade.Window):
         elif key == arcade.key.RIGHT:
             self.player.change_x = setup.MOVEMENT_SPEED
 
-        # Hangman letter input
+        # Hangman letter input; makes the letters on the keyboard usable in room 10
         if self.current_room == 10:
             self.choice_hangman = None
             try:
-                choice_hangman = chr(key)
+                choice_hangman = chr(key) #it's important to get the character value and not the Ascii value, so we can later compare
                 self.choice_hangman = choice_hangman
                 current_room = self.rooms[self.current_room]
                 self.letter_sprite = current_room.letters[self.choice_hangman]
-                self.letter_sprite.center_x = self.player.center_x + 30
+                self.letter_sprite.center_x = self.player.center_x + 30 #positioning of the speech bubble with user input
                 self.letter_sprite.center_y = self.player.center_y + 30
                 self.rooms[self.current_room].wall_list.append(self.letter_sprite)
             except:
@@ -447,6 +447,7 @@ class MyGame(arcade.Window):
             self.total_time = 0
             self.score = 0
 
+        #checks if the player manages to get 40 python coins in the first minigame.
         elif self.current_room == 7 and self.score == 40:
             self.current_room = 2
             self.physics_engine = arcade.PhysicsEngineSimple(self.player,
@@ -469,6 +470,7 @@ class MyGame(arcade.Window):
             self.rooms[self.current_room].wall_list.append(dialogue_1)
             self.rooms[self.current_room].wall_list.append(dialogue_2)
 
+        # Checks if the user gets 20 python coins in the third minigame
         elif self.current_room == 9 and self.score == 20:
             self.current_room = 4
             self.physics_engine = arcade.PhysicsEngineSimple(self.player,
@@ -496,7 +498,7 @@ class MyGame(arcade.Window):
         if self.current_room == 10:
             # This is our secret word
             word_hangman = "binary"
-            if self.choice_hangman != None:
+            if self.choice_hangman != None: #checks if a key has been pressed
                 if self.choice_hangman in self.rooms[self.current_room].letters.keys():
                     if self.choice_hangman in word_hangman:
                         # Cover boxes with the right letter when guessed:
@@ -505,8 +507,8 @@ class MyGame(arcade.Window):
                             letter_B.left = 12 * setup.SPRITE_SIZE
                             letter_B.bottom = 6 * setup.SPRITE_SIZE
                             self.rooms[self.current_room].wall_list.append(letter_B)
-                            self.correct_letters += 1
-                            self.choice_hangman = None
+                            self.correct_letters += 1 #counter to know when the game is won
+                            self.choice_hangman = None #needs to be set to None again after every choice, otherwise the loop doesn't reiterate
                         if self.choice_hangman == "i":
                             letter_I = arcade.Sprite("images/lock_I.png", setup.SPRITE_SCALING)
                             letter_I.left = 13 * setup.SPRITE_SIZE
@@ -544,7 +546,7 @@ class MyGame(arcade.Window):
                             self.choice_hangman = None
                     # Else adds an error and draws another part of the gallow
                     else:
-                        self.tries += 1
+                        self.tries += 1 #counter to know when all the tries are used
                         self.rooms[self.current_room].gallows_list[self.tries].left = 13 * setup.SPRITE_SIZE
                         self.rooms[self.current_room].gallows_list[self.tries].bottom = 2 * setup.SPRITE_SIZE
                         self.rooms[self.current_room].wall_list.append(self.rooms[self.current_room].gallows_list[self.tries])
@@ -554,22 +556,24 @@ class MyGame(arcade.Window):
                             for gallow in self.gallows_remove_list:
                                 gallow.remove_from_sprite_lists()
 
-                                new_gallow = self.rooms[self.current_room].gallows_list[self.tries]
+                                new_gallow = self.rooms[self.current_room].gallows_list[self.tries] #number of current try corresponds with the right picture of the gallows
 
                                 self.rooms[self.current_room].gallows_list[self.tries].left = 13 * setup.SPRITE_SIZE
                                 self.rooms[self.current_room].gallows_list[self.tries].bottom = 2 * setup.SPRITE_SIZE
                                 self.rooms[self.current_room].wall_list.append(new_gallow)
 
+        #move the player back to the other room when the man gets hanged
         if self.current_room == 10 and self.tries == 5:
             self.current_room = 5
             self.physics_engine = arcade.PhysicsEngineSimple(self.player,
                                                              self.rooms[self.current_room].wall_list)
             self.player.center_y = setup.SCREEN_HEIGHT - 50
             self.player.center_x = setup.SCREEN_WIDTH // 2
-            self.tries == 0
+            self.tries == 0 #reset the variables
             self.correct_letters = 0
             self.rooms[10] = rooms.setup_room_11()
 
+        #end the minigame when the correct word is guessed
         if self.current_room == 10 and self.correct_letters == 6:
             self.current_room = 5
             self.physics_engine = arcade.PhysicsEngineSimple(self.player,

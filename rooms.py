@@ -243,7 +243,7 @@ def setup_room_11():
     wall.bottom = (3 * setup.SPRITE_SIZE) + 3
     room.wall_list.append(wall)
 
-    # Create the Gallows:
+    # Create the Gallows. Different images get written to a list, which we will later use to show the progress of the game:
     gallows_1 = arcade.Sprite("images/Gallows_1.png", setup.SPRITE_SCALING)
     gallows_2 = arcade.Sprite("images/Gallows_2.png", setup.SPRITE_SCALING)
     gallows_3 = arcade.Sprite("images/Gallows_3.png", setup.SPRITE_SCALING)
