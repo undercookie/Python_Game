@@ -11,6 +11,6 @@ Just before you crash (and burn), you levitate, mere inches above the ground, an
 You look around, and the surroundings seem familiar, but there is something... something off about it all.
 You can’t quite put your finger on it.
 “But hey, that’s normal.”, you think to yourself. Most worlds you visit are similar, and yet different.
-It takes. Little to figure out the little quirks and odds of each world.
+It takes little to figure out the little quirks and odds of each world.
 You spot a man staring at you with a worrying smile on his face.
 You approach him, and he begins to speak…
