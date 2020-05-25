@@ -18,6 +18,16 @@ class Room:
         Each function either makes the bottom and top row of walls,
         or the right and left. """
 
+    def create_wall_top_bottom(self, image):
+        # This y loops a list of two, the coordinate 0, and just under the top of window
+        for y in (0, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE):
+            # Loop for each box going across
+            for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
+                wall = arcade.Sprite(image, setup.SPRITE_SCALING)
+                wall.left = x  # x-location of box
+                wall.bottom = y  # y-location of box
+                self.wall_list.append(wall)
+
     def create_wall_sides_trophy_room(self, image):
         for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
             for y in range(setup.SPRITE_SIZE, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE, setup.SPRITE_SIZE):
@@ -27,14 +37,6 @@ class Room:
                     wall.left = x
                     wall.bottom = y
                     self.wall_list.append(wall)
-
-    def create_wall_top_bottom(self, image):
-        for y in (0, setup.SCREEN_HEIGHT - setup.SPRITE_SIZE):
-            for x in range(0, setup.SCREEN_WIDTH, setup.SPRITE_SIZE):
-                wall = arcade.Sprite(image, setup.SPRITE_SCALING)
-                wall.left = x
-                wall.bottom = y
-                self.wall_list.append(wall)
 
     def create_wall_left_right(self, image):
         for x in (0, setup.SCREEN_WIDTH - setup.SPRITE_SIZE):
